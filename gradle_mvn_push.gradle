@@ -1,8 +1,5 @@
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-group = GROUP
-version = VERSION_NAME
-
 
 def getPropertyFromLocalProperties(key) {
     File file = project.rootProject.file('local.properties');
@@ -44,22 +41,31 @@ artifacts {
 
 uploadArchives {
     repositories.mavenDeployer {
-        repository(url: repositoryUrl) {
-            authentication(userName: getPropertyFromLocalProperties("USER"), password: getPropertyFromLocalProperties("PASSWORD"))
-        }
+        repository(url: uri('../repo')) //仓库的路径，此处是项目根目录下的 repo 的文件夹
+        pom.groupId = 'com.app.plugin'  //groupId ，自行定义，一般是包名
+        pom.artifactId = 'autopatchplugin' //artifactId ，自行定义
+        pom.version = '1.0.0' //version 版本号
     }
 }
-bintray {
-    user = getPropertyFromLocalProperties("bintray.user")
-    key = getPropertyFromLocalProperties("bintray.apikey")
-    configurations = ['archives']
-    pkg {
-        repo = 'maven'
-        name = "${project.group}:${project.name}"
-        userOrg = 'meituan'
-        licenses = ['Apache-2.0']
-        websiteUrl = 'http://tech.meituan.com/android_autopatch.html'
-        vcsUrl = 'https://github.com/Meituan-Dianping/Robust'
-        publish = true
-    }
-}
+
+//uploadArchives {
+//    repositories.mavenDeployer {
+//        repository(url: repositoryUrl) {
+//            authentication(userName: getPropertyFromLocalProperties("USER"), password: getPropertyFromLocalProperties("PASSWORD"))
+//        }
+//    }
+//}
+//bintray {
+//    user = getPropertyFromLocalProperties("bintray.user")
+//    key = getPropertyFromLocalProperties("bintray.apikey")
+//    configurations = ['archives']
+//    pkg {
+//        repo = 'maven'
+//        name = "${project.group}:${project.name}"
+//        userOrg = 'meituan'
+//        licenses = ['Apache-2.0']
+//        websiteUrl = 'http://tech.meituan.com/android_autopatch.html'
+//        vcsUrl = 'https://github.com/Meituan-Dianping/Robust'
+//        publish = true
+//    }
+//}
