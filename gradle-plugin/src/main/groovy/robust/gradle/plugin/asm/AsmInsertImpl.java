@@ -1,6 +1,5 @@
 package robust.gradle.plugin.asm;
 
-import com.android.utils.AsmUtils;
 import com.meituan.robust.ChangeQuickRedirect;
 import com.meituan.robust.Constants;
 
@@ -29,6 +28,7 @@ import java.util.zip.ZipOutputStream;
 import javassist.CannotCompileException;
 import javassist.CtClass;
 import javassist.bytecode.AccessFlag;
+import jdk.nashorn.internal.runtime.regexp.joni.constants.AsmConstants;
 import robust.gradle.plugin.InsertcodeStrategy;
 
 

@@ -1,15 +1,39 @@
 apply plugin: 'groovy'
+apply plugin: 'maven'
+
+
+group = 'com.effective.plugins'
+archivesBaseName = 'aotu-patch-plugin'
+version = '1.0.8'
+
 compileGroovy {
     sourceCompatibility = 1.7
     targetCompatibility = 1.7
 }
 
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
 dependencies {
     compile gradleApi()
     compile localGroovy()
-    compile 'com.android.tools.build:gradle:2.1.0'
+    compile 'com.android.tools.build:gradle:3.6.0'
     compile 'org.javassist:javassist:3.22.0-GA'
-//    compile 'com.meituan.robust:autopatchbase:' + VERSION_NAME
-    compile project(':autopatchbase')
+    compile 'com.meituan.robust:autopatchbase:0.4.99'
+//    implementation project(':autopatchbase')
 }
-apply from: '../gradle_mvn_push.gradle'
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs = ['src/main/groovy']
+        }
+        java {
+            srcDirs = ['src/main/java']
+        }
+    }
+}
+
+//apply from: '../gradle_mvn_push.gradle'

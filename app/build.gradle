@@ -1,15 +1,20 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
 //apply plugin: 'auto-patch-plugin'
 apply plugin: 'robust'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion build_versions.compile_sdk
+    buildToolsVersion build_versions.build_tools
+
+    compileOptions {
+        sourceCompatibility build_versions.java_source
+        targetCompatibility build_versions.java_target
+    }
+
     defaultConfig {
         applicationId "com.meituan.robust.sample"
-        minSdkVersion 9
-        targetSdkVersion 25
+        minSdkVersion 14
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -30,24 +35,20 @@ android {
     }
     buildTypes {
         release {
-//            minifyEnabled false
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.meituan
         }
         debug {
             minifyEnabled true
-//            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
     }
+
     packagingOptions {
         exclude 'META-INF/maven/com.google.guava/guava/pom.properties'
         exclude 'META-INF/maven/com.google.guava/guava/pom.xml'
@@ -65,11 +66,9 @@ dependencies {
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:28.0.0'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile 'com.google.code.gson:gson:2.3.1'
-    compile 'com.android.support:design:25.4.0'
+    compile 'com.android.support:design:28.0.0'
     compile 'org.javassist:javassist:3.22.0-GA'
     compile project(path: ':patch')
 }

@@ -19,9 +19,9 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>Robust</groupId>
-      <artifactId>autopatchplugin</artifactId>
-      <version>unspecified</version>
+      <groupId>com.app.plugin</groupId>
+      <artifactId>base</artifactId>
+      <version>1.0.0</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
