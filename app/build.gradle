@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 //apply plugin: 'auto-patch-plugin'
 apply plugin: 'robust'
 
@@ -71,4 +72,8 @@ dependencies {
     compile 'com.android.support:design:28.0.0'
     compile 'org.javassist:javassist:3.22.0-GA'
     compile project(path: ':patch')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

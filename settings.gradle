@@ -3,5 +3,5 @@ include ':autopatchbase'
 include ':patch'
 
 
-include 'gradle-plugin'
-include 'auto-patch-plugin'
+includeBuild 'gradle-plugin'
+includeBuild 'auto-patch-plugin'

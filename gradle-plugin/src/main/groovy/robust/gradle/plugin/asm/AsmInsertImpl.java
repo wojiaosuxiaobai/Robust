@@ -28,7 +28,7 @@ import java.util.zip.ZipOutputStream;
 import javassist.CannotCompileException;
 import javassist.CtClass;
 import javassist.bytecode.AccessFlag;
-import jdk.nashorn.internal.runtime.regexp.joni.constants.AsmConstants;
+import robust.gradle.plugin.ConvertUtils;
 import robust.gradle.plugin.InsertcodeStrategy;
 
 
