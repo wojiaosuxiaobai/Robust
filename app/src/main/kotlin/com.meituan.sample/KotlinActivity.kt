@@ -1,15 +1,15 @@
 package com.meituan.sample
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.*
+import com.meituan.robust.patch.RobustModify
 import com.meituan.robust.patch.annotaion.Add
-import com.meituan.sample.KotlinActivity
+import com.meituan.robust.patch.annotaion.Modify
 import java.lang.reflect.Field
+import kotlin.jvm.Throws
 
 class KotlinActivity : AppCompatActivity(), View.OnClickListener {
     private var listView: ListView? = null
@@ -20,9 +20,12 @@ class KotlinActivity : AppCompatActivity(), View.OnClickListener {
         listView = findViewById<View>(R.id.listview) as ListView
         val textView = findViewById<View>(R.id.secondtext) as TextView
         textView.setOnClickListener { v: View? ->
-//                    RobustModify.modify();
-            Log.d("robust", " onclick  in Listener")
+                    RobustModify.modify();
+            Toast.makeText(this@KotlinActivity, "fix", Toast.LENGTH_LONG).show()
         }
+//        textView.setOnClickListener { v: View? ->
+//            Toast.makeText(this@KotlinActivity, "occur", Toast.LENGTH_LONG).show()
+//        }
         //change text on the  SecondActivity
         textView.text = getTextInfo()
 
@@ -30,21 +33,21 @@ class KotlinActivity : AppCompatActivity(), View.OnClickListener {
         val adapter: BaseAdapter = ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, multiArr)
         listView!!.adapter = adapter
         printLog("robust", arrayOf(arrayOf("1", "2", "3"), arrayOf("4", "5", "6")))
-    }//        return "error fixed";
+    }//
 
-    //    @Modify
+    @Modify
     private fun getTextInfo(): String {
         array
-        return "error occur "
+        return "error fixed";
     }
 
-    @get:Add
+//    private fun getTextInfo(): String {
+//        array
+//        return "error occur";
+//    }
+
     val array: Array<String>
         get() = arrayOf("hello", "world")
-
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View {
-        return super.onCreateView(name, context, attrs)
-    }
 
     override fun onClick(v: View) {
         Toast.makeText(this@KotlinActivity, "from implements onclick ", Toast.LENGTH_SHORT).show()

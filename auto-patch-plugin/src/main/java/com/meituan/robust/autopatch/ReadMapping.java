@@ -36,8 +36,6 @@ public class ReadMapping {
 
     /***
      * read all class mapping info
-     *
-     * @return
      */
     public void initMappingInfo() {
         //查找mapping文件

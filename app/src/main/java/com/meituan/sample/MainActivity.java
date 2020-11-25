@@ -59,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.jump_kotlin_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, KotlinActivity.class);
+                startActivity(intent);
+            }
+        });
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

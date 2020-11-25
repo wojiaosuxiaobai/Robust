@@ -31,7 +31,7 @@ configurations.all {
 }
 dependencies {
 //    compile 'com.meituan.robust:autopatchbase:' + VERSION_NAME
-    compile project(':autopatchbase')
+    implementation project(':autopatchbase')
 }
 
 //apply from: '../gradle_mvn_push.gradle'

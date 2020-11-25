@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.meituan.robust.patch.RobustModify;
 import com.meituan.robust.patch.annotaion.Add;
 import com.meituan.robust.patch.annotaion.Modify;
 
@@ -24,6 +25,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     protected static String name = "SecondActivity";
     private ListView listView;
     private String[] multiArr = {"列表1", "列表2", "列表3", "列表4"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +34,14 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         listView = (ListView) findViewById(R.id.listview);
         TextView textView = (TextView) findViewById(R.id.secondtext);
         textView.setOnClickListener(v -> {
-//                    RobustModify.modify();
-                    Log.d("robust", " onclick  in Listener");
+                    RobustModify.modify();
+                    Toast.makeText(SecondActivity.this, "fix", Toast.LENGTH_LONG).show();
                 }
         );
+//        textView.setOnClickListener(v -> {
+//                    Toast.makeText(SecondActivity.this, "occur", Toast.LENGTH_LONG).show();
+//                }
+//        );
         //change text on the  SecondActivity
         textView.setText(getTextInfo());
 
@@ -45,16 +51,20 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         printLog("robust", new String[][]{new String[]{"1", "2", "3"}, new String[]{"4", "5", "6"}});
     }
 
-//    @Modify
+    @Modify
     public String getTextInfo() {
         getArray();
-        return "error occur " ;
-//        return "error fixed";
+//        return "error occur " ;
+        return "error fixed";
     }
 
-    @Add
+//    public String getTextInfo() {
+//        getArray();
+//        return "error occur ";
+//    }
+
     public String[] getArray() {
-       return new String[]{"hello","world"};
+        return new String[]{"hello", "world"};
     }
 
     @Override
