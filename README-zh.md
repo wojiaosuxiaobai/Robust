@@ -2,6 +2,8 @@
 ###Fixed Android Gradle Plugin Version 4.x compilation errors.
 ###Fixed Targeting R+ (version 30 and above) installed APKs error.
 
+Copy repo dir to your project root path
+
 ```
 classpath'com.meituan.robust:gradle-plugin:0.4.99'
 classpath'com.meituan.robust:auto-patch-plugin:0.4.99'
@@ -10,8 +12,8 @@ classpath'com.meituan.robust:auto-patch-plugin:0.4.99'
 Change to
 
 ```
-classpath'com.effective.android:gradle-plugin-fix:0.4.99.1'
-classpath'com.effective.android:auto-patch-plugin-fix:0.4.99.1'
+classpath'com.effective.android:gradle-plugin-fix:0.4.99.5'
+classpath'com.effective.android:auto-patch-plugin-fix:0.4.99.5'
 ```
 
 Add repositories
@@ -19,7 +21,7 @@ Add repositories
 ```
     repositories {
         //...
-        maven {url'https://dl.bintray.com/yummylau/maven'}
+        repository(url: uri('../repo'))
     }
 ```
 
