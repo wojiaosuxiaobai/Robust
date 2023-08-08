@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.meituan.robust.PatchExecutor;
+import com.meituan.robust.RobustApkHashUtils;
+
 /**
  * For users of Robust you may only to use MainActivity or SecondActivity,other classes are used for test.<br>
  * <br>
@@ -73,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "arrived in ", Toast.LENGTH_SHORT).show();
             }
         });
+
+        TextView normal = findViewById(R.id.normal);
+        Log.d("robust", "apkHash: " + RobustApkHashUtils.readRobustApkHash(this));
+        normal.setText(RobustApkHashUtils.readRobustApkHash(this));
 
     }
 

@@ -24,7 +24,7 @@ class ConvertUtils {
                 org.apache.commons.io.FileUtils.listFiles(it.file, null, true).each {
                     if (it.absolutePath.endsWith(SdkConstants.DOT_CLASS)) {
                         def className = it.absolutePath.substring(dirPath.length() + 1, it.absolutePath.length() - SdkConstants.DOT_CLASS.length()).replaceAll(Matcher.quoteReplacement(File.separator), '.')
-                        if ("META-INF.versions.9.module-info" != className) {
+                        if (!className.contains("META-INF.versions.9")) {
                             if (classNames.contains(className)) {
                                 throw new RuntimeException("You have duplicate classes with the same name : " + className + " please remove duplicate classes1")
                             }
@@ -43,7 +43,7 @@ class ConvertUtils {
                     String className = libClass.getName();
                     if (className.endsWith(SdkConstants.DOT_CLASS)) {
                         className = className.substring(0, className.length() - SdkConstants.DOT_CLASS.length()).replaceAll('/', '.')
-                        if ("META-INF.versions.9.module-info" != className) {
+                        if (!className.contains("META-INF.versions.9")) {
                             if (classNames.contains(className)) {
                                 throw new RuntimeException("You have duplicate classes with the same name : " + className + " please remove duplicate classes")
                             }
@@ -74,7 +74,7 @@ class ConvertUtils {
         return allClass;
     }
 
-     static boolean isJava9CompileProduct(String className) {
+    static boolean isJava9CompileProduct(String className) {
         return "META-INF.versions.9.module-info" != className
     }
 }

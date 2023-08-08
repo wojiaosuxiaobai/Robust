@@ -10,7 +10,7 @@ import java.util.zip.*
 class RobustApkHashZipUtils {
     static void packZip(File output, List<File> sources) throws IOException {
         ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(output));
-        zipOut.setLevel(Deflater.BEST_SPEED);
+        zipOut.setLevel(Deflater.NO_COMPRESSION)
 
         List<File> fileList = new LinkedList<File>();
         for (Object source : sources) {
@@ -118,7 +118,7 @@ class RobustApkHashZipUtils {
         tempZipFile.renameTo(apFile.getAbsolutePath())
     }
 
-    private static ZipEntry getRightZipEntry(ZipEntry originZipEntry){
+    static ZipEntry getRightZipEntry(ZipEntry originZipEntry){
         ZipEntry rightZipEntry = new ZipEntry(originZipEntry.getName());
         if (ZipEntry.STORED == originZipEntry.getMethod()) {
             rightZipEntry.setMethod(ZipEntry.STORED)
@@ -146,7 +146,7 @@ class RobustApkHashZipUtils {
         return rightZipEntry;
     }
 
-    private static long computeFileCrc32(File file) throws IOException {
+    static long computeFileCrc32(File file) throws IOException {
         InputStream inputStream = new FileInputStream(file);
         CRC32 crc = new CRC32();
         int index;

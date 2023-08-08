@@ -57,23 +57,23 @@
         android:text="jump_kotlin_activity" />
 
     <TextView
+        android:id="@+id/normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="normal"
-        android:id="@+id/normal"
-        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerVertical="true"
+        android:text="normal"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
+        android:id="@+id/robust"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Robust"
-        android:id="@+id/robust"
         android:layout_below="@+id/normal"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="41dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="41dp"
+        android:text="Robust"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 </RelativeLayout>

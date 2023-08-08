@@ -14,6 +14,7 @@ import kotlin.jvm.Throws
 class KotlinActivity : AppCompatActivity(), View.OnClickListener {
     private var listView: ListView? = null
     private val multiArr = arrayOf("列表1", "列表2", "列表3", "列表4")
+    @Modify
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
@@ -41,6 +42,12 @@ class KotlinActivity : AppCompatActivity(), View.OnClickListener {
         return "error fixed";
     }
 
+    @Add
+    class Test() {
+        fun onClick(v: View) {
+
+        }
+    }
 //    private fun getTextInfo(): String {
 //        array
 //        return "error occur";
