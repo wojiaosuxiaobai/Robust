@@ -12,8 +12,8 @@ classpath 'com.meituan.robust:auto-patch-plugin:0.4.99'
 改成
 
 ```
-classpath 'com.effective.android:gradle-plugin-fix:0.4.99.1'
-classpath 'com.effective.android:auto-patch-plugin-fix:0.4.99.1'
+classpath 'com.effective.android:gradle-plugin-fix:0.4.99.5'
+classpath 'com.effective.android:auto-patch-plugin-fix:0.4.99.5'
 ```
 
 添加仓库
