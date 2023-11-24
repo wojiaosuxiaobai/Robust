@@ -57,6 +57,9 @@ public class ReadMapping {
                     line = line.trim();
                 }
                 needBacktrace = false;
+                if (line.length() == 0 || line.startsWith("#")) {
+                    continue;
+                }
                 if (line.indexOf("->") > 0 && line.indexOf(":") == line.length() - 1) {
                     ClassMapping classMapping = new ClassMapping();
                     classMapping.setClassName(line.substring(0, line.indexOf("->") - 1).trim());
@@ -64,6 +67,10 @@ public class ReadMapping {
                     line = reader.readLine();
                     while (line != null) {
                         line = line.trim();
+                        if (line.length() == 0 || line.startsWith("#")) {
+                            line = reader.readLine();
+                            continue;
+                        }
                         if (line.endsWith(":")) {
                             needBacktrace = true;
                             break;

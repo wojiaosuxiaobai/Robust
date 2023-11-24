@@ -49,7 +49,7 @@ uploadArchives {
     repositories.mavenDeployer {
         repository(url: uri('../repo'))
         pom.groupId = 'com.effective.android'
-        pom.artifactId = 'gradle-plugin-fix'
-        pom.version = '0.4.99.5'
+        pom.artifactId = 'auto-patch-plugin-fix'
+        pom.version = '0.4.99.7'
     }
 }
