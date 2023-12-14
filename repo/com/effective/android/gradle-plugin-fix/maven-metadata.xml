@@ -3,10 +3,12 @@
   <groupId>com.effective.android</groupId>
   <artifactId>gradle-plugin-fix</artifactId>
   <versioning>
-    <release>0.4.99.5</release>
+    <release>0.4.99.7</release>
     <versions>
       <version>0.4.99.5</version>
+      <version>0.4.99.6</version>
+      <version>0.4.99.7</version>
     </versions>
-    <lastUpdated>20230808083234</lastUpdated>
+    <lastUpdated>20231124020452</lastUpdated>
   </versioning>
 </metadata>
