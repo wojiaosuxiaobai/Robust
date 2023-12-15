@@ -1,5 +1,6 @@
 apply plugin: 'groovy'
-apply plugin: 'maven'
+//apply plugin: 'maven'
+apply plugin: "maven-publish"
 //apply plugin: 'com.novoda.bintray-release'
 
 group = 'com.effective.plugins'
@@ -45,11 +46,38 @@ sourceSets {
 //    website = 'https://github.com/YummyLau/Anchors'
 //}
 
-uploadArchives {
-    repositories.mavenDeployer {
-        repository(url: uri('../repo'))
-        pom.groupId = 'com.max.xiaoheihe.robust'
-        pom.artifactId = 'auto-patch-plugin-fix'
-        pom.version = '0.4.99.7'
+//uploadArchives {
+//    repositories.mavenDeployer {
+//        repository(url: uri('../repo'))
+//        pom.groupId = 'com.max.xiaoheihe.robust'
+//        pom.artifactId = 'auto-patch-plugin-fix'
+//        pom.version = '0.4.99.7'
+//    }
+//}
+
+afterEvaluate {
+    publishing {
+        publications {
+
+            release(MavenPublication) {
+                from components.java
+                groupId = "com.max.xiaoheihe.robust"
+                artifactId = "auto-patch-plugin-fix"
+                version = '0.4.99.7'
+            }
+        }
+        repositories {
+            maven {
+                url "https://git.maxjia.com/api/v4/projects/491/packages/maven"
+                name "GitLab"
+                credentials(HttpHeaderCredentials) {
+                    name = "Private-Token"
+                    value = "glpat-_1rLe6yyPGY77zCwMT2a"
+                }
+                authentication {
+                    header(HttpHeaderAuthentication)
+                }
+            }
+        }
     }
 }
